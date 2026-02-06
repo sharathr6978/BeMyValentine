@@ -90,6 +90,7 @@ button {
   left: 70%;
   background: #e5e7eb;
   color: #111827;
+  transition: left 0.3s ease, top 0.3s ease; /* ← smooth glide */
 }
 
 @keyframes pulse {
@@ -120,7 +121,7 @@ button {
     <button id="noBtn">No</button>
   </section>
 
-  <div class="hint" id="hint">Hover carefully 😈</div>
+  <div class="hint" id="hint">Hover carefully ❤️</div>
 
   <section class="result" id="result">
     <h2>YAY 💖</h2>
@@ -225,3 +226,4 @@ yesBtn.addEventListener("click", () => {
 </script>
 </body>
 </html>
+
