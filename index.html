@@ -167,15 +167,20 @@ function hearts() {
 }
 
 /* ---------- NO BUTTON RUNS ---------- */
-function clamp(n,min,max){ return Math.max(min,Math.min(max,n)); }
+let lastMove = 0;
 
 zone.addEventListener("pointermove", e => {
+  const now = Date.now();
+  if (now - lastMove < 300) return; // only move every 300ms
+  lastMove = now;
+
   const zb = zone.getBoundingClientRect();
   const b = noBtn.getBoundingClientRect();
   const d = Math.hypot(
     b.left + b.width/2 - e.clientX,
     b.top + b.height/2 - e.clientY
   );
+
   if (d < 120) {
     let x = Math.random() * (zb.width - b.width);
     let y = Math.random() * (zb.height - b.height);
@@ -183,6 +188,7 @@ zone.addEventListener("pointermove", e => {
     noBtn.style.top = y + "px";
   }
 });
+
 
 /* ---------- YES BUTTON MAGIC ---------- */
 let hoverTimer = null;
@@ -226,4 +232,5 @@ yesBtn.addEventListener("click", () => {
 </script>
 </body>
 </html>
+
 
